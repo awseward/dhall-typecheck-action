@@ -20,9 +20,9 @@ _install_dhall "$1"
 temp_file="$(mktemp)"
 
 collect_errors() {
+  echo
   find . -type f -name '*.dhall' | while read -r fpath; do
     set +e
-    echo
     echo "Checking ${fpath} ..."
     dhall --no-cache <<< "${fpath}" > /dev/null
     set -e
